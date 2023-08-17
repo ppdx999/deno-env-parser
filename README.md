@@ -5,10 +5,11 @@
 ## Usage
 
 ```typescript
+import { assertEquals } from "https://deno.land/std@0.198.0/assert/mod.ts";
 import {
   Env,
   parse,
-} from "https://github.com/ppdx999/deno-env-parser/blob/main/mod.ts";
+} from "https://raw.githubusercontent.com/ppdx999/deno-env-parser/main/mod.ts";
 
 const source = `# this is a comment
 str="value"
