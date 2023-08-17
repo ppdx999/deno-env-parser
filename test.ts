@@ -1,6 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.198.0/assert/mod.ts";
-import { type Env } from "./types.ts";
-import { parse } from "./parser.ts";
+import { Env, parse } from "./mod.ts";
 
 const source = `# this is a comment
 str="value"
