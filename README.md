@@ -4,14 +4,9 @@
 
 ## Usage
 
-```typescript
-import { assertEquals } from "https://deno.land/std@0.198.0/assert/mod.ts";
-import {
-  Env,
-  parse,
-} from "https://raw.githubusercontent.com/ppdx999/deno-env-parser/main/mod.ts";
-
-const source = `# this is a comment
+```sh
+$ cat .env
+# this is a comment
 str="value"
 nospace=nospace
 
@@ -21,9 +16,22 @@ is_true=true
 is_false=false
 num=123
 zero=0
-str_start_zero=0123`;
+str_start_zero=0123
+```
 
-const expected: Env = [
+```typescript
+import { parse } from "https://raw.githubusercontent.com/ppdx999/deno-env-parser/main/mod.ts";
+/*
+if you use node, run `npm i env-files-parser` and import like below
+
+import { parse } from "env-files-parser";
+
+*/
+
+// somehow read string data from .env file
+const env: string = readFile('env')
+
+const result = [
   "# this is a comment",
   ["str", "value"],
   ["nospace", "nospace"],
@@ -37,8 +45,5 @@ const expected: Env = [
   ["str_start_zero", "0123"],
 ];
 
-Deno.test("parser", () => {
-  const actual = parse(source);
-  assertEquals(actual, expected);
-});
+result == parser(env) // --> true
 ```
