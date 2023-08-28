@@ -75,3 +75,22 @@ export const parse = (contents: string): Env =>
 
     return [key, tinyVal];
   });
+
+export const parseKV = (
+  contents: string,
+): Record<string, string | number | boolean> => {
+  const env = parse(contents);
+
+  return env.reduce((acc, line) => {
+    if (isComment(line)) {
+      return acc;
+    }
+
+    const [key, val] = line;
+
+    return {
+      ...acc,
+      [key]: val,
+    };
+  }, {});
+};
