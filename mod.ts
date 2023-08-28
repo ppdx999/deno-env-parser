@@ -76,7 +76,7 @@ export const parse = (contents: string): Env =>
     return [key, tinyVal];
   });
 
-export const parseKV = (
+export const parseToRecord = (
   contents: string,
 ): Record<string, string | number | boolean> => {
   const env = parse(contents);
